@@ -20,7 +20,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.demo.jwt.JwtTokenProvider;
 
 import io.jsonwebtoken.ExpiredJwtException;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 	
@@ -35,7 +37,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
     		throws ServletException, IOException {
-    	System.out.println("JWT FILTER TRIGGERED");
+    	log.debug("JWT FILTER TRIGGERED");
     	String authorizationHeader = request.getHeader(AUTHORIZATION_HEADER);
 
     	// check if header contains authorization header
@@ -55,22 +57,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 			return;
 		}
 
-
-		System.out.println("UserName: " + username);
-		System.out.println("Hello");
-		System.out.println("UserAuthenticated: ");
-		System.out.println(SecurityContextHolder.getContext().getAuthentication());
-		System.out.println(SecurityContextHolder.getContext().getAuthentication() == null);
-		
 		// if token is valid configure Spring Security to manually set authentication
     	if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
     		UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
 
-			System.out.println("UserDetailsName: " + userDetails.getUsername());
     		if (jwtTokenProvider.validateToken(jwt, userDetails)) {
     			UsernamePasswordAuthenticationToken authRequest = 
     					new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-    			System.out.println("Authorities: " + userDetails.getAuthorities());
     			authRequest.setDetails(
     					new WebAuthenticationDetailsSource().buildDetails(request));
 

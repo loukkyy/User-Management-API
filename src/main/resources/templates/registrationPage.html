@@ -4,12 +4,14 @@
 
 <head>
     <title>Registration Page</title>
-
-    <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+	<!-- Bootstrap core CSS -->
+	<link href="../static/bootstrap-4.4.1-dist/css/bootstrap.css" type="text/css" rel="stylesheet" th:href="@{/bootstrap-4.4.1-dist/css/bootstrap.css}"/>
+	<link href="../static/fontawesome-free-5.13.0-web/css/all.css"  rel="stylesheet" th:href="@{/fontawesome-free-5.13.0-web/css/all.css}" />
+	<link href="../static/css/loginPage.css" type="text/css" rel="stylesheet" th:href="@{/css/loginPage.css}"/>
 
 </head>
 <body>
-<div class="container">
+<!-- <div class="container">
     <h1>Registration page</h1>
     <form id="userForm" th:action="@{/users/register}" th:object="${user}" action="#" method="post" class="form-horizontal">
         <div th:if="${#fields.hasErrors('global')}" th:errors="*{global}" class="alert alert-danger">Incorrect password confirmation</div>
@@ -40,7 +42,47 @@
             <input type="submit" class="btn btn-primary" value="Register"/>
         </div>
     </form>
-</div>
+</div> -->
 
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body text-center">
+            <img class="mb-4" src="../static/img/AF-Twin_logo_new.png" alt="" width="72" height="72">
+            <h5 class="card-title">Sign Up</h5>
+            <form id="userForm" th:action="@{/users/register}" th:object="${user}" action="#" method="post" class="form-signin">
+
+                <div th:if="${#fields.hasErrors('global')}" th:errors="*{global}" class="alert alert-danger">Incorrect password confirmation</div>
+                <input type="hidden" th:field="*{id}"/>
+
+                <div class="form-label-group" th:classappend="${#fields.hasErrors('email')} ? 'has-error'">
+                    <input class="form-control" id="email"  type="email" title="email" th:field="*{email}" name="email" placeholder="Email" autofocus required/>
+                    <label for="email">Email address</label>
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="help-block">Email Error</span>
+                </div>
+
+                <div class="form-label-group" th:classappend="${#fields.hasErrors('password')} ? 'has-error'">
+                    <input id="password" class="form-control" type="password" title="password" th:field="*{password}" name="password" placeholder="Password" required>
+                    <label for="password">Password</label>
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="help-block">Password Error</span>
+                </div>
+
+                <div class="form-label-group" th:classappend="${#fields.hasErrors('passwordConfirmation')} ? 'has-error'">
+                    <input id="passwordConfirmation" class="form-control" type="password" title="passwordConfirmation" th:field="*{passwordConfirmation}" name="passwordConfirmation" placeholder="Confirm Password" required>
+                    <label for="passwordConfirmation">Confirm Password</label>
+                    <span th:if="${#fields.hasErrors('passwordConfirmation')}" th:errors="*{passwordConfirmation}" class="help-block">Password Confirmation Error</span>
+                </div>
+
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+                <hr class="my-4">
+                <a class="btn btn-block" th:href="@{/login}">Back to Login page</a>
+                <p class="mt-5 mb-3 text-muted">AF-Twin Services & Solutions</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -3,45 +3,85 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<title>Login Page</title>
-
-<link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-
+	<title>Login Page</title>
+	<!-- Bootstrap core CSS -->
+	<link href="../static/bootstrap-4.4.1-dist/css/bootstrap.css" type="text/css" rel="stylesheet" th:href="@{/bootstrap-4.4.1-dist/css/bootstrap.css}"/>
+	<link href="../static/fontawesome-free-5.13.0-web/css/all.css"  rel="stylesheet" th:href="@{/fontawesome-free-5.13.0-web/css/all.css}" />
+	<link href="../static/css/loginPage.css" type="text/css" rel="stylesheet" th:href="@{/css/loginPage.css}"/>
 </head>
 <body>
+
 	<div class="container">
-		<h1>Login page</h1>
+		<div class="row">
+		  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+			<div class="card card-signin my-5">
+			  <div class="card-body text-center">
+				<img class="mb-4" src="../static/img/AF-Twin_logo_new.png" alt="" width="72" height="72">
+				<h5 class="card-title">Sign In</h5>
+				<form th:action="@{/doLogin}" method="post" class="form-signin">
+
+					<div th:if="${param.error}" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}" class="alert alert-danger">Login Error</div>
+					<div th:if="${message}" th:text="${message}" class="alert alert-success">Message</div>
+					<div th:if="${errorMessage}" th:text="${errorMessage}" class="alert alert-danger">Error Message</div>
+					<div th:if="${param.logout}" class="alert alert-success">You have been logged out.</div>
+
+				  <div class="form-label-group">
+					<input class="form-control" id="username" type="text" name="username" placeholder="Email" autofocus required/>
+					<label for="username">Email address</label>
+				  </div>
+	
+				  <div class="form-label-group">
+					<input type="password" id="password" class="form-control" name="password" placeholder="Password" required>
+					<label for="password">Password</label>
+				  </div>
+				 
+				  <div class="custom-control custom-checkbox mb-3">
+					<input type="checkbox" class="custom-control-input" id="remember" name="remember" value="true">
+					<label class="custom-control-label" for="remember">Remember me</label>
+				  </div>
+
+				  <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+				  <hr class="my-4">
+				  <a class="btn btn-block" th:href="@{/signup}">Sign Up</a>
+				  <p class="mt-5 mb-3 text-muted">AF-Twin Services & Solutions</p>
+				</form>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	<!-- <div class="container text-center">
+		<img class="mb-4" src="../static/img/AF-Twin_logo_new.png" alt="" width="72" height="72">
+		<h3>Sign in</h3>
 
 		<div th:if="${param.error}" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}" class="alert alert-danger">Login Error</div>
 		<div th:if="${message}" th:text="${message}" class="alert alert-success">Message</div>
 		<div th:if="${errorMessage}" th:text="${errorMessage}" class="alert alert-danger">Error Message</div>
 		<div th:if="${param.logout}" class="alert alert-success">You have been logged out.</div>
 
-		<form th:action="@{/doLogin}" method="post" class="form-horizontal">
+		<form th:action="@{/doLogin}" method="post" class="form-signin">
 			<div class="form-group">
-				<label class="control-label col-xs-2" for="username"> Email:</label>
-				<div class="col-xs-10">
-					<input id="username" type="text" name="username" />
-				</div>
+				<input class="form-control" id="username" type="text" name="username" placeholder="Email" autofocus required/>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-xs-2" for="password"> Password: </label>
-				<div class="col-xs-10">
-					<input id="password" type="password" name="password" />
-				</div>
+				<input class="form-control" id="password" type="password" name="password" placeholder="Password" autofocus required/>
 			</div>
-            <div class="form-group">
-                <label class="control-label col-xs-2" for="remember"> Remember Me? </label>
-                <div class="col-xs-10">
-                    <input id="remember" type="checkbox" name="remember" value="true" />
-                </div>
-            </div>
-			<div class="form-actions col-xs-offset-2 col-xs-10">
-				<input type="submit" class="btn btn-primary" value="Sign In" />
-				<a class="btn btn-default" th:href="@{/signup}">Sign Up</a>
+  			<div class="form-check mb-3">
+				<label class="control-label" for="remember">
+					<input id="remember" type="checkbox" name="remember" value="true" />
+					Remember Me
+				</label>
 			</div>
+			
+			<div class="form-actions">
+				<button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in</button>
+				<button type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In" />
+				<hr class="my-4"/>
+				<a class="btn btn-block" th:href="@{/signup}">Sign Up</a>
+			</div>
+			<p class="mt-5 mb-3 text-muted">AF-Twin Services & Solutions</p>
 		</form>
-	</div>
-
+	</div> -->
 </body>
 </html>

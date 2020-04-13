@@ -7,8 +7,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.demo.persistence.model.Role;
-import com.demo.persistence.repository.RoleRepository;
+import com.demo.model.Role;
+import com.demo.repository.RoleRepository;
 
 @Service
 @Transactional

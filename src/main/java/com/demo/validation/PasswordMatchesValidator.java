@@ -3,7 +3,7 @@ package com.demo.validation;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import com.demo.persistence.model.User;
+import com.demo.model.User;
 
 public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, Object> {
 

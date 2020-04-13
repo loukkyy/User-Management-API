@@ -14,9 +14,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.demo.persistence.model.Role;
-import com.demo.persistence.model.User;
-import com.demo.persistence.repository.UserRepository;
+import com.demo.model.Role;
+import com.demo.model.User;
+import com.demo.repository.UserRepository;
 
 @Service
 @Transactional
@@ -52,7 +52,6 @@ public class MyUserDetailsService implements UserDetailsService {
 		         .map(p -> new SimpleGrantedAuthority(p.getName()))
 		         .forEach(authorities::add);
 		    }
-		    System.out.println(authorities);
 		    return authorities;
 		}
 }

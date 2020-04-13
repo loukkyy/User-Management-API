@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.demo.persistence.model.User;
-import com.demo.persistence.model.VerificationToken;
-import com.demo.persistence.repository.UserRepository;
-import com.demo.persistence.repository.VerificationTokenRepository;
+import com.demo.model.User;
+import com.demo.model.VerificationToken;
+import com.demo.repository.UserRepository;
+import com.demo.repository.VerificationTokenRepository;
 import com.demo.validation.EmailExistsException;
 
 @Service
@@ -37,6 +37,7 @@ class UserService implements IUserService {
     	return userRepository.findAll();
     }
 
+    @Transactional
     @Override
     public User registerNewUser(final User user) throws EmailExistsException {
         if (emailExist(user.getEmail())) {

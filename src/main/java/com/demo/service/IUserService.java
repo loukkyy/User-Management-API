@@ -2,8 +2,8 @@ package com.demo.service;
 
 import java.util.List;
 
-import com.demo.persistence.model.User;
-import com.demo.persistence.model.VerificationToken;
+import com.demo.model.User;
+import com.demo.model.VerificationToken;
 import com.demo.validation.EmailExistsException;
 
 public interface IUserService {
