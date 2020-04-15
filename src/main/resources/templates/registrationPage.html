@@ -3,58 +3,44 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>Registration Page</title>
-	<!-- Bootstrap core CSS -->
-	<link href="../static/bootstrap-4.4.1-dist/css/bootstrap.css" type="text/css" rel="stylesheet" th:href="@{/bootstrap-4.4.1-dist/css/bootstrap.css}"/>
-	<link href="../static/fontawesome-free-5.13.0-web/css/all.css"  rel="stylesheet" th:href="@{/fontawesome-free-5.13.0-web/css/all.css}" />
-	<link href="../static/css/loginPage.css" type="text/css" rel="stylesheet" th:href="@{/css/loginPage.css}"/>
+    <title>Sign up Page</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link href="../static/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet"
+        th:href="@{/fontawesome-free-5.13.0-web/css/all.css}" />
+    <link href="../static/css/loginPage.css" type="text/css" rel="stylesheet" th:href="@{/css/loginPage.css}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 
 </head>
+
 <body>
-<!-- <div class="container">
-    <h1>Registration page</h1>
-    <form id="userForm" th:action="@{/users/register}" th:object="${user}" action="#" method="post" class="form-horizontal">
-        <div th:if="${#fields.hasErrors('global')}" th:errors="*{global}" class="alert alert-danger">Incorrect password confirmation</div>
-        <input type="hidden" th:field="*{id}"/>
 
-        <div class="form-group" th:classappend="${#fields.hasErrors('email')} ? 'has-error'">
-            <label class="control-label col-xs-2" for="email">Email</label>
-            <div class="col-xs-10">
-                <input id="email" type="email" title="email" th:field="*{email}"/>
-                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="help-block">Email Error</span>
-            </div>
-        </div>
-        <div class="form-group" th:classappend="${#fields.hasErrors('password')} ? 'has-error'">
-            <label class="control-label col-xs-2" for="password">Password</label>
-            <div class="col-xs-10">
-                <input id="password" type="password" title="password" th:field="*{password}"/>
-                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="help-block">Password Error</span>
-            </div>
-        </div>
-        <div class="form-group" th:classappend="${#fields.hasErrors('passwordConfirmation')} ? 'has-error'">
-            <label class="control-label col-xs-2" for="passwordConfirmation">Password Confirmation</label>
-            <div class="col-xs-10">
-                <input id="passwordConfirmation" type="password" title="passwordConfirmation" th:field="*{passwordConfirmation}"/>
-                <span th:if="${#fields.hasErrors('passwordConfirmation')}" th:errors="*{passwordConfirmation}" class="help-block">Password Confirmation Error</span>
-            </div>
-        </div>
-        <div class="form-actions col-xs-offset-2 col-xs-10">
-            <input type="submit" class="btn btn-primary" value="Register"/>
-        </div>
-    </form>
-</div> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body text-center">
+                        <img class="mb-4" src="../apple-touch-icon.png" alt="" width="72" height="72">
+                        <h5 class="card-title">Sign Up</h5>
+                        <form id="userForm" th:action="@{/users/register}" th:object="${userSignupRequest}" action="#"
+                            method="post" class="form-signin">
 
-<div class="container">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div class="card card-signin my-5">
-          <div class="card-body text-center">
-            <img class="mb-4" src="../static/img/AF-Twin_logo_new.png" alt="" width="72" height="72">
-            <h5 class="card-title">Sign Up</h5>
-            <form id="userForm" th:action="@{/users/register}" th:object="${user}" action="#" method="post" class="form-signin">
-
-                <div th:if="${#fields.hasErrors('global')}" th:errors="*{global}" class="alert alert-danger">Incorrect password confirmation</div>
+                            <div th:if="${#fields.hasErrors('global')}" th:errors="*{global}" class="alert alert-danger">Incorrect password confirmation</div>
                 <input type="hidden" th:field="*{id}"/>
+
+                <div class="form-label-group" th:classappend="${#fields.hasErrors('firstName')} ? 'has-error'">
+                    <input class="form-control" id="firstName"  type="text" title="firstName" th:field="*{firstName}" name="firstName" placeholder="First Name" autofocus required/>
+                    <label for="firstName">First Name</label>
+                    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="help-block">First Name Error</span>
+                </div>
+
+                <div class="form-label-group" th:classappend="${#fields.hasErrors('lastName')} ? 'has-error'">
+                    <input class="form-control" id="lastName"  type="text" title="lastName" th:field="*{lastName}" name="lastName" placeholder="Last Name" autofocus required/>
+                    <label for="lastName">Last Name</label>
+                    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="help-block">Last Name Error</span>
+                </div>
 
                 <div class="form-label-group" th:classappend="${#fields.hasErrors('email')} ? 'has-error'">
                     <input class="form-control" id="email"  type="email" title="email" th:field="*{email}" name="email" placeholder="Email" autofocus required/>
@@ -76,8 +62,8 @@
 
                 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
                 <hr class="my-4">
-                <a class="btn btn-block" th:href="@{/login}">Back to Login page</a>
-                <p class="mt-5 mb-3 text-muted">AF-Twin Services & Solutions</p>
+                <a class="btn btn-block" th:href="@{/login}">I already have an account</a>
+                <p class="mt-5 mb-3 text-muted">User Manager API - &copy; 2020 Servan Fichet</p>
             </form>
           </div>
         </div>

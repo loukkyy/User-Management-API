@@ -20,11 +20,12 @@ insert into role_privileges values (1, 6); -- admin can privilege delete
 insert into role_privileges values (2, 1); -- user can user read
 insert into role_privileges values (2, 4); -- user privilege user read
 
--- add user (user@test.com/123)
-insert into user values (1, '2020-04-05 11:59:15.493', 'user@test.com', 'TRUE', '$2a$10$LNPcf0oj6wIC42DOydCFluqs2jkCJa1to4UUtIqy97AibvAgu/8u.'); --  user@test.com/123
-insert into user values (2, '2020-04-05 11:59:15.493', 'admin@test.com', 'TRUE', '$2a$10$LNPcf0oj6wIC42DOydCFluqs2jkCJa1to4UUtIqy97AibvAgu/8u.'); --  admin@test.com/123
+-- add users
+insert into user values (1, '2020-04-05 11:59:15.493', 'user@test.com', 'TRUE', 'John', 'Doe', '$2a$10$LNPcf0oj6wIC42DOydCFluqs2jkCJa1to4UUtIqy97AibvAgu/8u.'); --  user@test.com/123
+insert into user values (2, '2020-04-05 11:59:15.493', 'admin@test.com', 'TRUE', 'Jane', 'Doe', '$2a$10$LNPcf0oj6wIC42DOydCFluqs2jkCJa1to4UUtIqy97AibvAgu/8u.'); --  admin@test.com/123
 
 -- add roles to users
 insert into user_roles values (1, 2); -- user@test.com has ROLE_USER role
 insert into user_roles values (2, 1); -- admin@test.com has ROLE_ADMIN role
+insert into user_roles values (2, 2); -- admin@test.com has ROLE_USER role
 

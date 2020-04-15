@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
-<head>
-<title>Users : View all</title>
-</head>
+
 <body>
-    <h1 layout:fragment="header">Users : View all</h1>
     <div layout:fragment="content" class="container">
-        <div class="pull-right">
-            <a href="form.html" th:href="@{/user/(form)}">Create User</a>
+        <div class="float-right mb-2">
+            <a class="btn btn-primary" href="form.html" 
+            th:href="@{/users/(form)}" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">Create User</a>
         </div>
-        <table class="table table-bordered table-striped">
+
+        <table class="table table-hover">
             <thead>
-                <tr>
-                    <td>Email</td>
-                    <td>Created</td>
-                </tr>
+              <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Created on</th>
+                <th scope="col">Actions</th>
+              </tr>
             </thead>
             <tbody>
+                
                 <tr th:if="${users.empty}">
                     <td colspan="4">No users</td>
                 </tr>
                 <tr th:each="user : ${users}">
-                    <td><a href="view.html" th:href="@{'/users/' + ${user.id}}" th:text="${user.email}"> Email </a></td>
-                    <td th:text="${#calendars.format(user.created)}">July 11, 2012 2:17:16 PM CDT</td>
+                    
+                    <td th:text="${user.firstName}"> First Name </td>
+                    <td th:text="${user.lastName}"> Last Name </td>
+                    <td th:text="${user.email}"> Email </td>
+                    <td th:text="${#calendars.format(user.created)}"> July 11, 2012 2:17:16 PM CDT </td>
+                    <td><a href="users" th:href="@{'/users/' + ${user.id}}"> view </a> 
+                        <a href="form.html" th:href="@{'/users/modify/' + ${user.id}}" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">| edit </a>
+                        <a href="users" th:href="@{'/users/delete/' + ${user.id}}" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">| delete </a></td>
                 </tr>
+             
             </tbody>
-        </table>
+          </table>
     </div>
 </body>
 </html>

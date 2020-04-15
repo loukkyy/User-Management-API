@@ -14,9 +14,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.demo.model.Role;
-import com.demo.model.User;
-import com.demo.repository.UserRepository;
+import com.demo.userManagement.model.Role;
+import com.demo.userManagement.model.User;
+import com.demo.userManagement.repository.UserRepository;
 
 @Service
 @Transactional

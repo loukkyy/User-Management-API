@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-<title>Layout</title>
-
-<link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" />
-
+<head th:replace="fragments/header::headerFiles">
+    <title>Layout</title>
 </head>
 <body>
     <div class="container">
-        <div class="navbar">
-            <div class="navbar-inner">
-                <a class="brand" href="/"> Home </a>
-                <ul class="nav">
-                    <li><a th:href="@{/users/}" href="users.html"> Users </a></li>
-                </ul>
-                <ul class="nav pull-right">
-                    <li><a th:href="@{/profile}" class="menu-right" > Hi, <span sec:authentication="principal.username">Bob</span> </a></li>                
-                    <li><a th:href="@{/logout}" class="menu-right" > Logout </a></li>
-                </ul>
-            </div>
+        <header class="mb-3" th:insert="fragments/header::header">
+            Header
+        </header>
+        <div layout:fragment="content">
+            Some content
         </div>
-        <h1 layout:fragment="header">Layout</h1>
-        <div layout:fragment="content">Some content</div>
     </div>
+    <footer th:replace="fragments/footer::footer">
+        <p>&copy; 2020 Servan Fichet</p>
+    </footer>
 </body>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </html>

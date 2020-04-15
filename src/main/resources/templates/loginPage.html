@@ -5,9 +5,13 @@
 <head>
 	<title>Login Page</title>
 	<!-- Bootstrap core CSS -->
-	<link href="../static/bootstrap-4.4.1-dist/css/bootstrap.css" type="text/css" rel="stylesheet" th:href="@{/bootstrap-4.4.1-dist/css/bootstrap.css}"/>
+  	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	<link href="../static/fontawesome-free-5.13.0-web/css/all.css"  rel="stylesheet" th:href="@{/fontawesome-free-5.13.0-web/css/all.css}" />
 	<link href="../static/css/loginPage.css" type="text/css" rel="stylesheet" th:href="@{/css/loginPage.css}"/>
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
 
@@ -16,7 +20,7 @@
 		  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 			<div class="card card-signin my-5">
 			  <div class="card-body text-center">
-				<img class="mb-4" src="../static/img/AF-Twin_logo_new.png" alt="" width="72" height="72">
+				<img class="mb-4" src="../apple-touch-icon.png" alt="" width="72" height="72">
 				<h5 class="card-title">Sign In</h5>
 				<form th:action="@{/doLogin}" method="post" class="form-signin">
 
@@ -43,45 +47,15 @@
 				  <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
 				  <hr class="my-4">
 				  <a class="btn btn-block" th:href="@{/signup}">Sign Up</a>
-				  <p class="mt-5 mb-3 text-muted">AF-Twin Services & Solutions</p>
+				  <p class="mt-5 mb-3 text-muted">User Manager API - &copy; 2020 Servan Fichet</p>
 				</form>
 			  </div>
 			</div>
 		  </div>
 		</div>
 	  </div>
-
-	<!-- <div class="container text-center">
-		<img class="mb-4" src="../static/img/AF-Twin_logo_new.png" alt="" width="72" height="72">
-		<h3>Sign in</h3>
-
-		<div th:if="${param.error}" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}" class="alert alert-danger">Login Error</div>
-		<div th:if="${message}" th:text="${message}" class="alert alert-success">Message</div>
-		<div th:if="${errorMessage}" th:text="${errorMessage}" class="alert alert-danger">Error Message</div>
-		<div th:if="${param.logout}" class="alert alert-success">You have been logged out.</div>
-
-		<form th:action="@{/doLogin}" method="post" class="form-signin">
-			<div class="form-group">
-				<input class="form-control" id="username" type="text" name="username" placeholder="Email" autofocus required/>
-			</div>
-			<div class="form-group">
-				<input class="form-control" id="password" type="password" name="password" placeholder="Password" autofocus required/>
-			</div>
-  			<div class="form-check mb-3">
-				<label class="control-label" for="remember">
-					<input id="remember" type="checkbox" name="remember" value="true" />
-					Remember Me
-				</label>
-			</div>
-			
-			<div class="form-actions">
-				<button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in</button>
-				<button type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In" />
-				<hr class="my-4"/>
-				<a class="btn btn-block" th:href="@{/signup}">Sign Up</a>
-			</div>
-			<p class="mt-5 mb-3 text-muted">AF-Twin Services & Solutions</p>
-		</form>
-	</div> -->
 </body>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </html>
