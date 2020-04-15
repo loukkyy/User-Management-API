@@ -18,6 +18,41 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+	
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<excludes>
+							<exclude>**/*IntegrationTest.java</exclude>
+							<exclude>**/*LiveTest.java</exclude>
+						</excludes>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+	</build>
+	
 	<repositories>
 		<repository>
 			<id>jcenter-snapshots</id>
@@ -25,6 +60,7 @@
 			<url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
 		</repository>
 	</repositories>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -73,7 +109,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-        	<scope>provided</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -142,14 +178,5 @@
 			<version>0.39</version>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

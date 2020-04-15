@@ -4,16 +4,16 @@
     <title>Layout</title>
 </head>
 <body>
+    <header class="mb-3 bg-dark" th:replace="fragments/header::header">
+        Header
+    </header>
     <div class="container">
-        <header class="mb-3" th:insert="fragments/header::header">
-            Header
-        </header>
         <div layout:fragment="content">
             Some content
         </div>
     </div>
     <footer th:replace="fragments/footer::footer">
-        <p>&copy; 2020 Servan Fichet</p>
+        Footer
     </footer>
 </body>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>

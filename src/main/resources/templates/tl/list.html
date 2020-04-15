@@ -29,9 +29,13 @@
                     <td th:text="${user.lastName}"> Last Name </td>
                     <td th:text="${user.email}"> Email </td>
                     <td th:text="${#calendars.format(user.created)}"> July 11, 2012 2:17:16 PM CDT </td>
-                    <td><a href="users" th:href="@{'/users/' + ${user.id}}"> view </a> 
-                        <a href="form.html" th:href="@{'/users/modify/' + ${user.id}}" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">| edit </a>
-                        <a href="users" th:href="@{'/users/delete/' + ${user.id}}" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">| delete </a></td>
+                    <td>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                            <a class="btn btn-secondary" th:href="@{'/users/' + ${user.id}}">view</a> 
+                            <a class="btn btn-secondary" th:href="@{'/users/modify/' + ${user.id}}" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">edit</a>
+                            <a class="btn btn-secondary" th:href="@{'/users/delete/' + ${user.id}}" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">delete</a>
+                        </div>
+                    </td>
                 </tr>
              
             </tbody>
